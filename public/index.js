@@ -26,8 +26,8 @@ async function renderPercentage() {
   let respData = await res.json();
   let negative = respData.find((r) => r.TotalRating == "Negative");
   $("#dvNegativePercent").html((negative ? negative["percentage"] : 0) + "%");
-  let positve = respData.find((r) => r.TotalRating == "Positve");
-  $("#dvPositivePercent").html((positve ? positve["percentage"] : 0) + "%");
+  let positive = respData.find((r) => r.TotalRating == "Positive");
+  $("#dvPositivePercent").html((positive ? positive["percentage"] : 0) + "%");
   let neutral = respData.find((r) => r.TotalRating == "Neutral");
   $("#dvNeutralPercent").html((neutral ? neutral["percentage"] : 0) + "%");
 }
@@ -81,30 +81,40 @@ async function renderBarChartForAllPages() {
     type: "bar",
     data: barChartData,
     options: {
-      plugins: {
-        title: {
-          display: true,
-          text: "Chart.js Bar Chart - Stacked",
+      scales: {
+        y: {
+          ticks: {
+            beginAtZero: true,
+            stepSize: 1,
+          },
         },
       },
+      // plugins: {
+      //   title: {
+      //     display: true,
+      //     text: "Chart.js Bar Chart - Stacked",
+      //   },
+      // },
       responsive: true,
-      scales: {
-        xAxes: [
-          {
-            // stacked: true,
-            ticks: {
-              beginAtZero: true,
-              maxRotation: 0,
-              minRotation: 0,
-            },
-          },
-        ],
-        yAxes: [
-          {
-            // stacked: true,
-          },
-        ],
-      },
+      // scales: {
+      //   xAxes: [
+      //     {
+      //       // stacked: true,
+      //       ticks: {
+      //         beginAtZero: true,
+      //         maxRotation: 0,
+      //         minRotation: 0,
+      //       },
+      //     },
+      //   ],
+      //   yAxes: [
+      //     {
+      //       // stacked: true,
+      //       stepSize: 1,
+      //       grace: "5%",
+      //     },
+      //   ],
+      // },
     },
   });
 }
@@ -159,12 +169,20 @@ async function renderLineChartDaywise() {
     type: "line",
     data: barChartData,
     options: {
-      plugins: {
-        title: {
-          display: true,
-          text: "Chart.js Bar Chart - Stacked",
+      scales: {
+        y: {
+          ticks: {
+            beginAtZero: true,
+            stepSize: 1,
+          },
         },
       },
+      // plugins: {
+      //   title: {
+      //     display: true,
+      //     text: "Chart.js Bar Chart - Stacked",
+      //   },
+      // },
       responsive: true,
       // scales: {
       //   xAxes: [
